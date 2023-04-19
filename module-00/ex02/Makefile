@@ -1,4 +1,4 @@
-NAME	:= phonebook
+NAME	:= account
 
 CC		:= g++
 FLAGS	:= -Wall -Wextra -std=c++98

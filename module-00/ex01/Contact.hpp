@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   contact.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 13:24:29 by jmeruma           #+#    #+#             */
+/*   Updated: 2023/04/17 13:24:30 by jmeruma          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string>
 
 class Contact {
@@ -19,9 +31,9 @@ class Contact {
 		
 
 	private:
-		std::string	first_name;
-		std::string last_name;
-		std::string nickname;
-		std::string	phone_number;
-		std::string secret;
+		std::string	_first_name;
+		std::string _last_name;
+		std::string _nickname;
+		std::string	_phone_number;
+		std::string _secret;
 };

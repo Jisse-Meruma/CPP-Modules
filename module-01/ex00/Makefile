@@ -1,10 +1,9 @@
-NAME	:= phonebook
+NAME	:= zombie
 
 CC		:= g++
 FLAGS	:= -Wall -Wextra -std=c++98
 
 SRC		:= $(wildcard *.cpp)
-HEADER	:= $(wildcard *.hpp)
 
 OBJ		:= $(SRC:.cpp=.o)
 

@@ -1,41 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 13:24:26 by jmeruma           #+#    #+#             */
+/*   Updated: 2023/04/17 13:24:27 by jmeruma          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 
 std::string Contact::getFirstname(void) {
-	return first_name;
+	return _first_name;
 }
 
 std::string Contact::getLastname(void) {
-	return last_name;
+	return _last_name;
 }
 
 std::string Contact::getNickname(void) {
-	return nickname;
+	return _nickname;
 }
 
 std::string Contact::getPhonenumber(void) {
-	return phone_number;
+	return _phone_number;
 }
 
 std::string Contact::getSecrect(void) {
-	return secret;
+	return _secret;
 }
 
 void Contact::setFirstname(std::string string) {
-	first_name = string;
+	_first_name = string;
 }
 
 void Contact::setLastname(std::string string) {
-	last_name = string;
+	_last_name = string;
 }
 
 void Contact::setNickname(std::string string) {
-	nickname = string;
+	_nickname = string;
 }
 
 void Contact::setPhonenumber(std::string string) {
-	phone_number = string;
+	_phone_number = string;
 }
 
 void Contact::setSecrect(std::string string) {
-	secret = string;
+	_secret = string;
 }
