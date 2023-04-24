@@ -6,12 +6,13 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:06:20 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/04/21 12:29:12 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/04/21 13:54:58 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
+#define ERROR -1
 
 
 int	main(int argc, char *argv[])
@@ -19,21 +20,36 @@ int	main(int argc, char *argv[])
 	if (argc != 4)
 	{
 		std::cout << "Error can only accept [3] arguments" << std::endl;
-		return (1);
+		return (ERROR);
 	}
-	
 
-	std::string file(argv[1]);
-	std::ifstream file_read(file);
-	std::ofstream file_write(file.append(".replace"));
-	if (file.is_open())
+	std::string file(argv[1]); // Transform a char * into an object string;
+	std::ifstream infile(file);
+
+	if (!infile.is_open()) // Can the infile be opened if not send error
 	{
-		
-	}
-	else
 		std::cout << "Unable to open file!" << std::endl;
-	std::string s1(argv[2]);
-	std::string s2(argv[3]);
+		return (ERROR);
+	}
 
-	file..
+	std::ofstream outfile(file.append(".replace")); // Create 2 filestreams infile and outfile with the .replace
+	std::string find_word(argv[2]);
+	std::string replace_word(argv[3]);
+	std::string line;
+
+	while (std::getline(infile, line)) // Get a line from the file specified, and put it in line
+	{
+		size_t position = line.find(find_word); // Find the word specified in the argument return a position index to that word! ~ if it cannot find the word it will go to npos(NULL terminator) 
+		while (position != line.npos)
+		{
+			line = line.substr(0, position) + replace_word + line.substr(position + find_word.length()); // substring the beginning till the occurence, then add the new word, then skip the old word and copy everything till npos
+			position = line.find(find_word, position + replace_word.length()); // find the next word in the string and do the same thing again! 
+		}
+		outfile << line << std::endl; // Write the line to the outfile
+	}
+
+	infile.close(); // And ofc close every filestream after done using it
+	outfile.close();
+	return (0);
+
 }
