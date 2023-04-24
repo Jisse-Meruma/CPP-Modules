@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 16:01:34 by jisse             #+#    #+#             */
-/*   Updated: 2023/04/24 11:26:32 by jmeruma          ###   ########.fr       */
+/*   Created: 2023/04/21 15:03:14 by jmeruma           #+#    #+#             */
+/*   Updated: 2023/04/24 11:53:41 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#include "Harl.hpp"
 
-HumanB::HumanB(std::string name)
+int main(int argc, char *argv[])
 {
-	this->_name = name;
-	this->_weapon = NULL;
-}
+	Harl hello;
 
-void	HumanB::setWeapon(Weapon &weapon)
-{
-	this->_weapon = &weapon;
-}
+	if (argc != 2)
+	{
+		std::cout << "Harl is complaining sooo much that the program cannot handle it please only try [1] complaint!" << std::endl;
+		return (-1);
+	}
 
-void	HumanB::attack( void )
-{
-	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
+	std::string level(argv[1]);
+
+	std::cout << "Harl just lost a brain cell" << std::endl;
+	hello.complain(level);
+
+	return 0;
 }

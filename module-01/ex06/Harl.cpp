@@ -6,33 +6,44 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:10:31 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/04/24 12:16:57 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/04/24 12:11:35 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-#define INVALID 10
 
 void	Harl::complain( std::string level )
 {
-	int counter = INVALID;
+	bool check = false;	
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	t_func toxic[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	
+
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (level == levels[i])
-			counter = i;
+			check = true;
 	}
 
-	if (counter == INVALID)
+	if (!check)
 	{
-		std::cout << "Wrong level has been given please! harl is unstoppable" << std::endl;
+		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 		std::exit(EXIT_FAILURE);
 	}
 
-	(this->*toxic[counter])();
-	std::cout << std::endl;
+	switch (level[0]) {
+		case 'D':
+			std::cout << "[ DEBUG ]" << std::endl;
+			debug();
+		case 'I':
+			std::cout << "[ INFO ]" << std::endl;
+			info();
+		case 'W':
+			std::cout << "[ WARNING ]" << std::endl;
+			warning();
+		case 'E':
+			std::cout << "[ ERROR ]" << std::endl;
+			error();
+			break;
+	}
 }
 
 void	Harl::debug( void )
@@ -47,7 +58,7 @@ void	Harl::info( void )
 
 void	Harl::warning( void )
 {
-	std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << std::endl;
+	std::cout << "I think I deserve to have some extra bacon for free. I've been coming for years whereas you started working here since last month." << std::endl;
 }
 
 void	Harl::error( void )
