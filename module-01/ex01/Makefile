@@ -1,7 +1,7 @@
-NAME	:= zombie
+NAME	:= zombiehorde
 
-CC		:= g++
-FLAGS	:= -Wall -Wextra -std=c++98
+CC		:= c++
+FLAGS	:= -Wall -Wextra -Werror -std=c++98
 
 SRC		:= $(wildcard *.cpp)
 

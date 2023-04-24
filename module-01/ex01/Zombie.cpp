@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:01:19 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/04/19 10:18:16 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/04/20 15:13:02 by jisse            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 Zombie::Zombie(std::string name)
 {
+	std::cout << "created Zombie with a name" << std::endl;
 	this->_name = name;
+}
+
+Zombie::Zombie( void )
+{
+	std::cout << "created Zombie" << std::endl;	
 }
 
 Zombie::~Zombie( void )

@@ -5,25 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 16:19:01 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/04/20 15:23:25 by jisse            ###   ########.fr       */
+/*   Created: 2023/04/20 15:26:20 by jisse             #+#    #+#             */
+/*   Updated: 2023/04/20 15:44:43 by jisse            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
 
-int	main(void)
+int main(void)
 {
-	int amount = 10;
-	Zombie *horde;
+	std::string string = "HI THIS IS BRAIN";
 
-	horde = zombieHorde(amount, "Jack");
+	std::string *stringPTR = &string;
 
-	for (int i = 0; i < amount; i++)
-		horde[i].announce();
+	std::string &stringREF = string;
 
-	std::cout << "Free the allocated object Zombie!" << std::endl;
-
-	// see if you find how to properly free the ZombieHorde : D
-	delete[] horde;
+	std::cout << "string	" << &string << std::endl;
+	std::cout << "string *	" << &stringPTR << std::endl;
+	std::cout << "string &	" << &stringREF << std::endl;
+	std::cout << std::endl;
+	std::cout << "string	" << string << std::endl;
+	std::cout << "string *	" << stringPTR << std::endl;
+	std::cout << "string &	" << stringREF << std::endl;
+	
+	
 }
