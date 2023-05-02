@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 14:10:31 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/04/24 12:11:35 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/01 16:05:46 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	Harl::complain( std::string level )
 	if (!check)
 	{
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-		std::exit(EXIT_FAILURE);
+		return ;
 	}
 
 	switch (level[0]) {
