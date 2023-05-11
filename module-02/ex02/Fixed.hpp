@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:11:13 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/05/02 19:51:09 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/11 13:52:54 by jisse            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ class Fixed
 	int		getFractional_bit( void ) const;
 	float	toFloat( void ) const;
 
+	static Fixed	&max( Fixed &C1, Fixed &C2);
+	static Fixed	&min( Fixed &C1, Fixed &C2);
+	
+	static const Fixed &max( const Fixed &C1, const Fixed &C2);
+	static const Fixed &min( const Fixed &C1, const Fixed &C2);
+	
 	void	operator=( const Fixed &fixed );
 	bool	operator<( const Fixed &C1 );
 	bool	operator>( const Fixed &C1 );

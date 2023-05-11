@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:16:50 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/05/02 19:51:14 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/11 13:56:59 by jisse            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,4 +173,36 @@ Fixed	Fixed::operator--(int)
 	Fixed temp = *this;
 	this->_fixed_point--;
 	return (temp);
+}
+
+Fixed	&Fixed::max(Fixed &C1, Fixed &C2)
+{
+	if (C1.getFixed_point() < C2.getFixed_point())
+		return (C2);
+	else
+		return (C1);
+}
+
+Fixed	&Fixed::min(Fixed &C1, Fixed &C2)
+{
+	if (C1.getFixed_point() < C2.getFixed_point())
+		return (C1);
+	else
+		return (C2);
+}
+
+const Fixed	&Fixed::max(const Fixed &C1, const Fixed &C2)
+{
+	if (C1.getFixed_point() < C2.getFixed_point())
+		return (C2);
+	else
+		return (C1);
+}
+
+const Fixed	&Fixed::min(const Fixed &C1, const Fixed &C2)
+{
+	if (C1.getFixed_point() < C2.getFixed_point())
+		return (C1);
+	else
+		return (C2);
 }
