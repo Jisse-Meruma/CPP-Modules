@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:16:50 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/05/02 17:57:28 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/12 16:00:21 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ Fixed::~Fixed( void )
 	std::cout << "Destructor called" << std::endl;
 }
 
-void	Fixed::operator=(const Fixed &C)
+Fixed	&Fixed::operator=(const Fixed &C)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->_fixed_point = C._fixed_point;
+	return (*this);
 }
 
 
@@ -56,7 +57,7 @@ int	Fixed::toInt( void ) const
 
 float	Fixed::toFloat( void ) const
 {
-	return (roundf(this->_fixed_point / (2 << (this->_fractional_bit - 1))));
+	return ((float)this->_fixed_point) / (2 << (this->_fractional_bit - 1));
 }
 
 int	Fixed::getFixed_point( void ) const
@@ -71,6 +72,6 @@ int Fixed::getFractional_bit( void ) const
 
 std::ostream	&operator<<(std::ostream &os, const Fixed &C) 
 {
-	os << roundf(C.getFixed_point()) / (2 << (C.getFractional_bit() - 1));
+	os << C.toFloat();
 	return os;	
 }

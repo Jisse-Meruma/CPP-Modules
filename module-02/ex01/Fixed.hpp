@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:11:13 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/05/02 17:02:39 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/12 13:56:48 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ class Fixed
 	int		toInt( void ) const;
 	float	toFloat( void ) const;
 
-	void				operator=(const Fixed &fixed);
+	Fixed	&operator=(const Fixed &fixed);
 	
 	private:
-		int					_fixed_point;
+		int64_t					_fixed_point;
 		static const int	_fractional_bit = 8;
 };
 

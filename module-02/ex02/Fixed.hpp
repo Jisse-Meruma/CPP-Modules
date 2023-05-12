@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:11:13 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/05/11 13:52:54 by jisse            ###   ########.fr       */
+/*   Updated: 2023/05/12 13:56:14 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ class Fixed
 	static const Fixed &max( const Fixed &C1, const Fixed &C2);
 	static const Fixed &min( const Fixed &C1, const Fixed &C2);
 	
-	void	operator=( const Fixed &fixed );
-	bool	operator<( const Fixed &C1 );
-	bool	operator>( const Fixed &C1 );
+	Fixed	&operator=( const Fixed &fixed );
+	bool	operator<( const Fixed &C1 ) const;
+	bool	operator>( const Fixed &C1 ) const;
 	bool	operator>=( const Fixed &C1 );
 	bool	operator<=( const Fixed &C1 );
 	bool	operator==( const Fixed &C1 );
 	bool	operator!=( const Fixed &C1 );
 
-	int	operator+( const Fixed &C1 );
-	int	operator-( const Fixed &C1 );
-	int	operator*( const Fixed &C1 );
-	int	operator/( const Fixed &C1 );
+	Fixed	operator+( const Fixed &C1 );
+	Fixed	operator-( const Fixed &C1 );
+	Fixed	operator*( const Fixed &C1 );
+	Fixed	operator/( const Fixed &C1 );
 
 	Fixed	&operator++( void );
 	Fixed	&operator--( void );

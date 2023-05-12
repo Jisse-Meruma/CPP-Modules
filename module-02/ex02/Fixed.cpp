@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:16:50 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/05/11 13:56:59 by jisse            ###   ########.fr       */
+/*   Updated: 2023/05/12 16:00:58 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ Fixed::Fixed( void )
 	this->_fixed_point = 0;
 }
 
-Fixed::Fixed( const int interger)
+Fixed::Fixed( const int integer)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->_fixed_point = interger << this->_fractional_bit;
+	this->_fixed_point = integer << this->_fractional_bit;
 }
 
 Fixed::Fixed( const float floating_point)
@@ -42,10 +42,11 @@ Fixed::~Fixed( void )
 	std::cout << "Destructor called" << std::endl;
 }
 
-void	Fixed::operator=(const Fixed &C)
+Fixed	&Fixed::operator=(const Fixed &C)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->_fixed_point = C._fixed_point;
+	return (*this);
 }
 
 
@@ -56,7 +57,7 @@ int	Fixed::toInt( void ) const
 
 float	Fixed::toFloat( void ) const
 {
-	return (roundf(this->_fixed_point / (2 << (this->_fractional_bit - 1))));
+	return ((float)this->_fixed_point) / (2 << (this->_fractional_bit - 1));
 }
 
 int	Fixed::getFixed_point( void ) const
@@ -71,18 +72,18 @@ int Fixed::getFractional_bit( void ) const
 
 std::ostream	&operator<<(std::ostream &out, const Fixed &C)
 {
-	out << roundf(C.getFixed_point()) / (2 << (C.getFixed_point() - 1));
+	out << C.toFloat();
 	return (out);
 }
 
-bool	Fixed::operator<(const Fixed &C)
+bool	Fixed::operator<(const Fixed &C) const
 {
 	if (this->getFixed_point() < C.getFractional_bit())
 		return (true);
 	return (false);
 }
 
-bool	Fixed::operator>(const Fixed &C)
+bool	Fixed::operator>(const Fixed &C) const
 {
 	if (this->getFixed_point() > C.getFractional_bit())
 		return (true);
@@ -117,36 +118,32 @@ bool	Fixed::operator!=(const Fixed &C)
 	return (false);
 }
 
-int	Fixed::operator+(const Fixed &C)
+Fixed	Fixed::operator+(const Fixed &C)
 {
-	int fixed;
+	Fixed temp(this->toFloat() + C.toFloat());
 
-	fixed = this->getFixed_point() + C.getFixed_point();
-	return (fixed);
+	return (temp);
 }
 
-int	Fixed::operator-(const Fixed &C)
+Fixed	Fixed::operator-(const Fixed &C)
 {
-	int fixed;
+	Fixed temp(this->toFloat() - C.toFloat());
 
-	fixed = this->getFixed_point() - C.getFixed_point();
-	return (fixed);
+	return (temp);
 }
 
-int	Fixed::operator*(const Fixed &C)
+Fixed	Fixed::operator*(const Fixed &C)
 {
-	int fixed;
+	Fixed temp(this->toFloat() * C.toFloat());
 
-	fixed = this->getFixed_point() * C.getFixed_point();
-	return (fixed);
+	return (temp);
 }
 
-int	Fixed::operator/(const Fixed &C)
+Fixed	Fixed::operator/(const Fixed &C)
 {
-	int fixed;
+	Fixed temp(this->toFloat() / C.toFloat());
 
-	fixed = this->getFixed_point() / C.getFixed_point();
-	return (fixed);
+	return (temp);
 }
 
 Fixed	&Fixed::operator++( void )
@@ -177,7 +174,7 @@ Fixed	Fixed::operator--(int)
 
 Fixed	&Fixed::max(Fixed &C1, Fixed &C2)
 {
-	if (C1.getFixed_point() < C2.getFixed_point())
+	if (C1 < C2)
 		return (C2);
 	else
 		return (C1);
@@ -185,7 +182,7 @@ Fixed	&Fixed::max(Fixed &C1, Fixed &C2)
 
 Fixed	&Fixed::min(Fixed &C1, Fixed &C2)
 {
-	if (C1.getFixed_point() < C2.getFixed_point())
+	if (C1 < C2)
 		return (C1);
 	else
 		return (C2);
@@ -193,7 +190,7 @@ Fixed	&Fixed::min(Fixed &C1, Fixed &C2)
 
 const Fixed	&Fixed::max(const Fixed &C1, const Fixed &C2)
 {
-	if (C1.getFixed_point() < C2.getFixed_point())
+	if (C1 < C2)
 		return (C2);
 	else
 		return (C1);
@@ -201,7 +198,7 @@ const Fixed	&Fixed::max(const Fixed &C1, const Fixed &C2)
 
 const Fixed	&Fixed::min(const Fixed &C1, const Fixed &C2)
 {
-	if (C1.getFixed_point() < C2.getFixed_point())
+	if (C1 < C2)
 		return (C1);
 	else
 		return (C2);
