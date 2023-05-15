@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:16:50 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/05/12 16:00:58 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/15 15:19:43 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,30 @@
 
 Fixed::Fixed( const Fixed &fixed )
 {
-	std::cout << "Copy constructor called" << std::endl;
 	this->_fixed_point = fixed._fixed_point;
 }
 
 Fixed::Fixed( void )
 {
-	std::cout << "Default constructor called" << std::endl;
 	this->_fixed_point = 0;
 }
 
 Fixed::Fixed( const int integer)
 {
-	std::cout << "Int constructor called" << std::endl;
 	this->_fixed_point = integer << this->_fractional_bit;
 }
 
 Fixed::Fixed( const float floating_point)
 {
-	std::cout << "Float constructor called" << std::endl;
 	this->_fixed_point = roundf(floating_point * (2 << (this->_fractional_bit - 1)));
 }
 
 Fixed::~Fixed( void )
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed	&Fixed::operator=(const Fixed &C)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	this->_fixed_point = C._fixed_point;
 	return (*this);
 }
@@ -78,42 +72,42 @@ std::ostream	&operator<<(std::ostream &out, const Fixed &C)
 
 bool	Fixed::operator<(const Fixed &C) const
 {
-	if (this->getFixed_point() < C.getFractional_bit())
+	if (this->getFixed_point() < C.getFixed_point())
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator>(const Fixed &C) const
 {
-	if (this->getFixed_point() > C.getFractional_bit())
+	if (this->getFixed_point() > C.getFixed_point())
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator>=(const Fixed &C)
 {
-	if (this->getFixed_point() >= C.getFractional_bit())
+	if (this->getFixed_point() >= C.getFixed_point())
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator<=(const Fixed &C)
 {
-	if (this->getFixed_point() >= C.getFractional_bit())
+	if (this->getFixed_point() >= C.getFixed_point())
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator==(const Fixed &C)
 {
-	if (this->getFixed_point() == C.getFractional_bit())
+	if (this->getFixed_point() == C.getFixed_point())
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator!=(const Fixed &C)
 {
-	if (this->getFixed_point() != C.getFractional_bit())
+	if (this->getFixed_point() != C.getFixed_point())
 		return (true);
 	return (false);
 }
@@ -125,14 +119,14 @@ Fixed	Fixed::operator+(const Fixed &C)
 	return (temp);
 }
 
-Fixed	Fixed::operator-(const Fixed &C)
+Fixed	Fixed::operator-(const Fixed &C) const
 {
 	Fixed temp(this->toFloat() - C.toFloat());
 
 	return (temp);
 }
 
-Fixed	Fixed::operator*(const Fixed &C)
+Fixed	Fixed::operator*(const Fixed &C) const
 {
 	Fixed temp(this->toFloat() * C.toFloat());
 

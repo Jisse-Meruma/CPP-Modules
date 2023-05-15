@@ -11,10 +11,12 @@ class Point
 
 	~Point(void);
 
-	const Fixed &getFixedx(void);
-	const Fixed &getFixedy(void);
+	const Fixed &getFixedx(void) const;
+	const Fixed &getFixedy(void) const;
 
 	private:
 		const Fixed	_x;
 		const Fixed	_y;
 };
+
+bool	bsp( Point const a, Point const b, Point const c, Point const point);
