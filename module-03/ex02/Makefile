@@ -1,7 +1,7 @@
-NAME	:= bsp
+NAME	:= claptrap
 
 CC		:= c++
-FLAGS	:= -Wall -Wextra -Werror -std=c++98 
+FLAGS	:= -Wall -Wextra -Werror -std=c++98
 
 SRC		:= $(wildcard *.cpp)
 

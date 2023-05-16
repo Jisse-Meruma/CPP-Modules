@@ -49,3 +49,14 @@ void	ClapTrap::attack(const std::string &target)
 {
 	std::cout << "ClapTrap " << this->_name << " Attacks " << target << ", " << "causing " << this->_attackdamage << " points of damage!" << std::endl;
 }
+
+ClapTrap	&ClapTrap::operator=(const ClapTrap &C)
+{
+	this->_name = C._name;
+	this->_attackdamage = C._attackdamage;
+	this->_energypoints = C._energypoints;
+	this->_hitpoints = C._hitpoints;
+	this->_maxhitpoints = C._maxhitpoints;
+
+	return (*this);
+}

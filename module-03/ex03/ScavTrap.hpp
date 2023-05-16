@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 
 //Derived class (child)
-class ScavTrap : public ClapTrap
+class ScavTrap : public virtual ClapTrap
 {
 	public:
 		ScavTrap( void );
@@ -10,7 +10,7 @@ class ScavTrap : public ClapTrap
 		~ScavTrap( void );
 
 		ScavTrap	&operator=(const ScavTrap &C);
-
+		
 		void	attack( const std::string &target );
 
 		void	guardGate( void );

@@ -10,7 +10,7 @@ class ScavTrap : public ClapTrap
 		~ScavTrap( void );
 
 		ScavTrap	&operator=(const ScavTrap &C);
-
+		
 		void	attack( const std::string &target );
 
 		void	guardGate( void );
