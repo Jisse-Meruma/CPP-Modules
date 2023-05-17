@@ -4,7 +4,7 @@ DiamondTrap::DiamondTrap(const std::string &name)
 {
 	std::cout << "(DiamondTrap) Name constructor is called!" << std::endl;
 	ClapTrap::_name = name + "_clap_name";
-	this->_name = name ;
+	this->_name = name;
 	this->_hitpoints = FragTrap::_hitpoints;
 	this->_energypoints = ScavTrap::_energypoints;
 	this->_attackdamage = FragTrap::_attackdamage;
