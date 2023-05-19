@@ -1,31 +1,31 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include <iostream>
 
-Animal::Animal(void)
+AAnimal::AAnimal(void)
 {
-    std::cout << "Animal created with an empty construcor" << std::endl;
+    std::cout << "AAnimal created with an empty construcor" << std::endl;
 
-    this->_type = "NULL Animal";
+    this->_type = "NULL AAnimal";
 
     return;
 }
 
-Animal::~Animal(void)
+AAnimal::~AAnimal(void)
 {
-    std::cout << "Animal " << this->_type << " deconstructed" << std::endl;
+    std::cout << "AAnimal " << this->_type << " deconstructed" << std::endl;
     return;
 }
 
-Animal::Animal(const Animal& C)
+AAnimal::AAnimal(const AAnimal& C)
 {
-    std::cout << "Animal created by copy" << std::endl;
+    std::cout << "AAnimal created by copy" << std::endl;
     *this = C;
     return;
 }
 
-Animal& Animal::operator=(const Animal& C)
+AAnimal& AAnimal::operator=(const AAnimal& C)
 {
-    std::cout << "Animal created by assertion" << std::endl;
+    std::cout << "AAnimal created by assertion" << std::endl;
 
     if (this != &C)
     {
@@ -35,12 +35,12 @@ Animal& Animal::operator=(const Animal& C)
     return (*this);
 }
 
-void    Animal::makeSound( void ) const
+void    AAnimal::makeSound( void ) const
 {
     std::cout << this->_type << "...." << std::endl;
 }
 
-const std::string &Animal::getType( void ) const
+const std::string &AAnimal::getType( void ) const
 {
     return (this->_type);
 }

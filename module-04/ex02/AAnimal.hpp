@@ -1,16 +1,16 @@
-#ifndef Animal_HPP
-# define Animal_HPP
+#ifndef AAnimal_HPP
+# define AAnimal_HPP
 # include <iostream>
 
-class Animal
+class AAnimal
 {
 	protected:
-		Animal(void);
-		Animal(const Animal& C);
+		AAnimal(void);
+		AAnimal(const AAnimal& C);
 
 	public:
-		virtual ~Animal(void);
-		Animal &operator=(const Animal& C);
+		virtual ~AAnimal(void);
+		AAnimal &operator=(const AAnimal& C);
 
 		virtual void makeSound(void) const;
 		const std::string	&getType(void) const;
