@@ -5,7 +5,7 @@ Cure::Cure(void)
 {
     std::cout << "Cure created with an empty construcor" << std::endl;
 
-    this->_type = "Cure";
+    this->_type = "cure";
 
     return;
 }
@@ -33,4 +33,9 @@ Cure& Cure::operator=(const Cure& C)
     }
 
     return (*this);
+}
+
+AMateria    *Cure::clone( void ) const
+{
+    return (new Cure(*this));
 }

@@ -5,14 +5,14 @@ Ice::Ice(void)
 {
     std::cout << "Ice created with an empty construcor" << std::endl;
 
-    this->_type = "Ice";
+    this->_type = "ice";
 
     return;
 }
 
 Ice::~Ice(void)
 {
-    std::cout << "Ice " << this->_type << " deconstructed" << std::endl;
+    std::cout << "ice " << this->_type << " deconstructed" << std::endl;
     return;
 }
 
@@ -33,4 +33,9 @@ Ice& Ice::operator=(const Ice& C)
     }
 
     return (*this);
+}
+
+AMateria    *Ice::clone( void ) const
+{
+    return (new Ice(*this));
 }

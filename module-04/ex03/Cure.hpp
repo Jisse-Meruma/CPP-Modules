@@ -10,6 +10,8 @@ class Cure : public AMateria
 		~Cure(void);
 
 		Cure &operator=(const Cure& C);
+
+		AMateria *clone( void ) const;
 };
 
 #endif

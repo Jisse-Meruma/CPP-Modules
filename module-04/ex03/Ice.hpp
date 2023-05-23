@@ -1,7 +1,9 @@
 #ifndef ICE_HPP
 # define ICE_HPP
+# include <iostream>
+# include "AMateria.hpp"
 
-class Ice
+class Ice : public AMateria
 {
 	public:
 		Ice(void);
@@ -9,6 +11,7 @@ class Ice
 		~Ice(void);
 
 		Ice &operator=(const Ice& C);
+		AMateria *clone( void ) const;
 };
 
 #endif

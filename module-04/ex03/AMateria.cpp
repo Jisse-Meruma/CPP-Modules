@@ -4,9 +4,6 @@
 AMateria::AMateria(void)
 {
     std::cout << "AMateria created with an empty construcor" << std::endl;
-
-    this->_type = "AMateria";
-
     return;
 }
 
