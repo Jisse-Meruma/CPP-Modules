@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 16:01:39 by jisse             #+#    #+#             */
-/*   Updated: 2023/04/24 11:22:50 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/24 13:50:01 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ HumanA::HumanA(std::string name, Weapon &weapon) : _weapon(weapon)
 {
 	this->_name = name;
 	this->_weapon = weapon;
-	
 }
 
 void	HumanA::attack( void )

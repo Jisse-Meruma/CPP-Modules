@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 16:01:34 by jisse             #+#    #+#             */
-/*   Updated: 2023/04/24 11:26:32 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/24 15:27:12 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,8 @@ void	HumanB::setWeapon(Weapon &weapon)
 
 void	HumanB::attack( void )
 {
-	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
+	if (this->_weapon == NULL)
+		std::cout << this->_name << " attacks with their " << "invisable weapon!" << std::endl;
+	else
+		std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
 }

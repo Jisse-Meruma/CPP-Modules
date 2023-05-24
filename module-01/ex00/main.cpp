@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:19:01 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/04/19 10:19:24 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/24 13:45:15 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ int	main(void)
 	Zombie *jisse = newZombie("Jisse");
 	Zombie *test1 = newZombie("test1");
 	Zombie *test2 = newZombie("test2");
+
+	jisse->announce();
+	test1->announce();
+	test2->announce();
 	
 	std::cout << "This is a stack created class!" << std::endl;
 	randomChump("Ruben");

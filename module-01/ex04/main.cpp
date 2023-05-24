@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:06:20 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/04/21 13:54:58 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/24 15:27:58 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ int	main(int argc, char *argv[])
 			line = line.substr(0, position) + replace_word + line.substr(position + find_word.length()); // substring the beginning till the occurence, then add the new word, then skip the old word and copy everything till npos
 			position = line.find(find_word, position + replace_word.length()); // find the next word in the string and do the same thing again! 
 		}
-		outfile << line << std::endl; // Write the line to the outfile
+		outfile << line;
+		if (infile.eof())
+			break ;
+		outfile << std::endl; // Write the line to the outfile
 	}
 
 	infile.close(); // And ofc close every filestream after done using it
