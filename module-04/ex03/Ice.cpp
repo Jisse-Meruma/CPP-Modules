@@ -39,3 +39,8 @@ AMateria    *Ice::clone( void ) const
 {
     return (new Ice(*this));
 }
+
+void Ice::use(ICharacter& target)
+{
+    std::cout << "Ice: * shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}

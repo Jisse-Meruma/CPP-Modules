@@ -1,4 +1,4 @@
-NAME	:= dog
+NAME	:= Materia
 
 CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -std=c++98 
@@ -16,7 +16,7 @@ run: all
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	$(CC) $^ $(FlAGS)  -o $(NAME)
+	$(CC) $^ $(FlAGS) -o $(NAME)
 
 clean:
 	@$(RM) $(OBJ)

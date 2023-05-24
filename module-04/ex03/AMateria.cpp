@@ -4,6 +4,14 @@
 AMateria::AMateria(void)
 {
     std::cout << "AMateria created with an empty construcor" << std::endl;
+    this->_type = "No name!";
+    return;
+}
+
+AMateria::AMateria( const std::string &type)
+{
+    std::cout << "AMateria created with an type construcor" << std::endl;
+    this->_type = type;
     return;
 }
 
@@ -30,4 +38,14 @@ AMateria& AMateria::operator=(const AMateria& C)
     }
 
     return (*this);
+}
+
+const std::string &AMateria::getType( void ) const
+{
+    return (this->_type);
+}
+
+void AMateria::use(ICharacter& target)
+{
+    std::cout << "Bare Hand: Uppercut to " << target.getName() << std::endl;
 }

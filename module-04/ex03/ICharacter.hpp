@@ -1,4 +1,5 @@
 #ifndef ICHARACTAR_HPP
+class AMateria;
 # define ICHARACTAR_HPP
 # include <iostream>
 # include "AMateria.hpp"
