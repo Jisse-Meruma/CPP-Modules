@@ -16,16 +16,17 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point)
 	Fixed Area2(area(a.getFixedx(), a.getFixedy(), point.getFixedx(), point.getFixedy(), c.getFixedx(), c.getFixedy()));
 	Fixed Area3(area(a.getFixedx(), a.getFixedy(), b.getFixedx(), b.getFixedy(), point.getFixedx(), point.getFixedy()));
 
-	// If all the small triangles areas add up to the total triangle area then we know the point is inisde the triangle.
 	int f_Area = std::abs(Area.toInt());
 
 	int f_Area1 = std::abs(Area1.toInt());
 	int f_Area2 = std::abs(Area2.toInt());
 	int f_Area3 = std::abs(Area3.toInt());
 
+	// If the point is on the line of the triangle then we return false
 	if (f_Area1 == 0 || f_Area2 == 0 || f_Area3 == 0)
 		return (false);
 
+	// If all the small triangles areas add up to the total triangle area then we know the point is inisde the triangle.
 	return ((f_Area == (f_Area1 + f_Area2 + f_Area3)) ? true : false);
 	
 }

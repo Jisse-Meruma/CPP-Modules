@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:16:50 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/05/12 17:48:09 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/26 13:54:02 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,42 +78,42 @@ std::ostream	&operator<<(std::ostream &out, const Fixed &C)
 
 bool	Fixed::operator<(const Fixed &C) const
 {
-	if (this->getFixed_point() < C.getFractional_bit())
+	if (this->getFixed_point() < C.getFixed_point())
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator>(const Fixed &C) const
 {
-	if (this->getFixed_point() > C.getFractional_bit())
+	if (this->getFixed_point() > C.getFixed_point())
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator>=(const Fixed &C)
 {
-	if (this->getFixed_point() >= C.getFractional_bit())
+	if (this->getFixed_point() >= C.getFixed_point())
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator<=(const Fixed &C)
 {
-	if (this->getFixed_point() >= C.getFractional_bit())
+	if (this->getFixed_point() >= C.getFixed_point())
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator==(const Fixed &C)
 {
-	if (this->getFixed_point() == C.getFractional_bit())
+	if (this->getFixed_point() == C.getFixed_point())
 		return (true);
 	return (false);
 }
 
 bool	Fixed::operator!=(const Fixed &C)
 {
-	if (this->getFixed_point() != C.getFractional_bit())
+	if (this->getFixed_point() != C.getFixed_point())
 		return (true);
 	return (false);
 }

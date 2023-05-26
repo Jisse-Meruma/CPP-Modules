@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:11:13 by jmeruma           #+#    #+#             */
-/*   Updated: 2023/05/12 13:56:48 by jmeruma          ###   ########.fr       */
+/*   Updated: 2023/05/26 13:52:58 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Fixed
 	Fixed	&operator=(const Fixed &fixed);
 	
 	private:
-		int64_t					_fixed_point;
+		int					_fixed_point;
 		static const int	_fractional_bit = 8;
 };
 
