@@ -2,7 +2,7 @@
 
 DiamondTrap::DiamondTrap(const std::string &name)
 {
-	std::cout << "(DiamondTrap) Name constructor is called!" << std::endl;
+	std::cout << "(DiamondTrap) With Name " << name << " constructor is called!" << std::endl;
 	ClapTrap::_name = name + "_clap_name";
 	this->_name = name;
 	this->_hitpoints = FragTrap::_hitpoints;
@@ -14,7 +14,7 @@ DiamondTrap::DiamondTrap(const std::string &name)
 
 DiamondTrap::DiamondTrap( void ) : ClapTrap()
 {
-	std::cout << "(DiamondTrap) Default constructor is called!" << std::endl;
+	std::cout << "(DiamondTrap) Default No-Name constructor is called!" << std::endl;
 	this->_name = "NO NAME";
 	this->_name = ClapTrap::_name;
 	this->_hitpoints = FragTrap::_hitpoints;

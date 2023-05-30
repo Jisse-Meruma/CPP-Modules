@@ -2,7 +2,7 @@
 
 ScavTrap::ScavTrap(const std::string &name)
 {
-	std::cout << "(ScavTrap) Name constructor is called!" << std::endl;
+	std::cout << "(ScavTrap) With Name " << name << " constructor is called!" << std::endl;
 	this->_name = name;
 	this->_attackdamage = 20;
 	this->_energypoints = 50;
@@ -13,7 +13,7 @@ ScavTrap::ScavTrap(const std::string &name)
 
 ScavTrap::ScavTrap( void ) : ClapTrap()
 {
-	std::cout << "(ScavTrap) Default constructor is called!" << std::endl;
+	std::cout << "(ScavTrap) (No Name) Default constructor is called!" << std::endl;
 	this->_name = "NO NAME";
 	this->_attackdamage = 20;
 	this->_energypoints = 50;
@@ -39,6 +39,8 @@ void	ScavTrap::guardGate( void )
 
 void	ScavTrap::attack(const std::string &target)
 {
+	if (this->CanDoAction())
+		return ;
 	std::cout << "ScavTrap " << this->_name << " Attacks " << target << ", " << "causing " << this->_attackdamage << " points of damage!" << std::endl;
 }
 

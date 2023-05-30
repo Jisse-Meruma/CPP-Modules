@@ -2,7 +2,7 @@
 
 FragTrap::FragTrap(const std::string &name)
 {
-	std::cout << "(FragTrap) Name constructor is called!" << std::endl;
+	std::cout << "(FragTrap) With Name " << name << " constructor is called!" << std::endl;
 	this->_name = name;
 	this->_attackdamage = 30;
 	this->_energypoints = 100;
@@ -33,6 +33,8 @@ void	FragTrap::highFivesGuys( void )
 
 void	FragTrap::attack(const std::string &target)
 {
+	if (this->CanDoAction())
+		return ;
 	std::cout << "FragTrap " << this->_name << " Attacks " << target << ", " << "causing " << this->_attackdamage << " points of damage!" << std::endl;
 }
 
