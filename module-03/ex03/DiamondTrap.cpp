@@ -9,6 +9,7 @@ DiamondTrap::DiamondTrap(const std::string &name)
 	this->_energypoints = ScavTrap::_energypoints;
 	this->_attackdamage = FragTrap::_attackdamage;
 	this->_maxhitpoints = this->_hitpoints;
+	std::cout << "---" << this->_name << "---" << this-> _energypoints << "---" << this->_attackdamage << "---" << std::endl;
 
 }
 
