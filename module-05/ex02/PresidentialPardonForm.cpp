@@ -1,14 +1,12 @@
 #include "PresidentialPardonForm.hpp"
 
 // Constructors and Destructor
-PresidentialPardonForm::PresidentialPardonForm() {
+PresidentialPardonForm::PresidentialPardonForm() : AForm("No_Name", 145, 137){
     std::cout << "PresidentialPardonForm default Constructor called" << std::endl;
-    this->name = "PresidentialPardonForm";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): Form(target){
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target, 145, 137){
     std::cout << "PresidentialPardonForm Constructor called" << std::endl;
-    this->_target = target;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {
@@ -17,7 +15,10 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 
 // Canonical form
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &obj) {
-    this->_target = obj.getTarget();
+    if (this != &obj)
+    {
+        // No Vars Needed
+    }
     return *this;
 }
 
@@ -27,7 +28,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj
 
 std::string PresidentialPardonForm::getTarget(void)
 {
-    return this->_target;
+    return this->getName();
 }
 
 PresidentialPardonForm::execute(Bureaucrat const & executor) const

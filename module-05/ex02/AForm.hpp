@@ -20,9 +20,8 @@ class AForm {
 	};
 
 	public:
-		AForm();
-		AForm(const std::string _name, const int signed_grade, const int exec_grade);
-		~AForm();
+		AForm::AForm(const std::string name, const int signed_grade, const int exec_grade);
+		virtual ~AForm();
 
 		AForm(const AForm &obj);
 		AForm	&operator=(const AForm &obj);
@@ -37,12 +36,14 @@ class AForm {
 	virtual void		execute(Bureaucrat const & executor) const = 0;
 
 	private:
+		AForm();
+
 		bool 				_signed;
 		const int			_signed_grade;
 		const int			_exec_grade;
 		const std::string 	_name;
 };
 
-std::ostream&   operator<<(std::ostream &out, const AForm &obj)
+std::ostream&   operator<<(std::ostream &out, const AForm &obj);
 
 #endif

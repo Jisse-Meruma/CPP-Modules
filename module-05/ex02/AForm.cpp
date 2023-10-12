@@ -1,5 +1,12 @@
 #include "AForm.hpp"
 
+AForm::AForm() : 	_signed_grade(1),\
+					_exec_grade(1), \
+					_name("")
+{
+	
+}
+
 const char *AForm::GradeTooHighException::what() const throw()
 {
 	return ("Form, GradeTooHigh Wrong Input [1-150]");

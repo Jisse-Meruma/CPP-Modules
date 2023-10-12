@@ -2,14 +2,12 @@
 #include <cstdlib>
 
 // Constructors and Destructor
-RobotomyRequestForm::RobotomyRequestForm() {
+RobotomyRequestForm::RobotomyRequestForm() : AForm("No_Name", 145, 137){
     std::cout << "RobotomyRequestForm default Constructor called" << std::endl;
-    this->name = "RobotomyRequestForm";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form(target){
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(target, 145, 137){
     std::cout << "RobotomyRequestForm Constructor called" << std::endl;
-    this->_target = target;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {

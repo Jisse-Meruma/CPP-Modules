@@ -89,6 +89,3 @@ std::ostream&   operator<<(std::ostream &out, const Bureaucrat &obj)
     out << obj.getName() << ", bureaucrat grade " << obj.getGrade();
     return (out);
 }
-
-
-Zombie JACk("JACK");

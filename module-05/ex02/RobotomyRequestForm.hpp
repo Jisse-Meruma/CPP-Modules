@@ -19,9 +19,6 @@ public:
 
     std::string getTarget(void);
     void execute(Bureaucrat const & executor) const;
-
-private:
-    std::string _target;
 };
 
 #endif
