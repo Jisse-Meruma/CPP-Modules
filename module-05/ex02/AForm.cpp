@@ -19,7 +19,7 @@ const char *AForm::GradeTooLowException::what() const throw()
 
 const char *AForm::FormNotSignedException::what() const throw()
 {
-	return ("AForm, FormNotSigned Please Make Sure To Have It Sign When Executed");
+	return ("AForm, FormNotSigned Please Make Sure To Have It Signed When Executed");
 }
 
 bool AForm::getSigned(void) const
@@ -49,11 +49,11 @@ void AForm::beSigned(const Bureaucrat &obj)
 	this->_signed = true;
 }
 
-void AForm::beExecuted(const Bureaucrat &obj)
+void AForm::beExecuted(const Bureaucrat &obj) const
 {
 	if (this->_signed == false)
 		throw FormNotSignedException();
-	if (this->_exec_grade > obj.getGrade())
+	if (this->_exec_grade < obj.getGrade())
 		throw GradeTooLowException();
 }
 
@@ -85,11 +85,19 @@ AForm	&AForm::operator=(const AForm &obj)
 	return *this;
 }
 
+void	AForm::setSigned(bool value)
+{
+	this->_signed = value;
+}
+
 std::ostream&   operator<<(std::ostream &out, const AForm &obj)
 {
-    out << ", Name " << obj.getName();
-	out << ", is Signed " << obj.getSigned();
-	out << ", Signed grade " << obj.getSignedGrade(); 
-	out << ", Execute grade " << obj.getExecGrade();
+    out << "Form " << obj.getName();
+	if (obj.getSigned())
+		out << " | is Signed -> YES";
+	else
+		out << " | is Signed -> NO";
+	out << " | Grade needed to sign " << obj.getSignedGrade(); 
+	out << " | Grade needed to execute " << obj.getExecGrade();
     return (out);
 }

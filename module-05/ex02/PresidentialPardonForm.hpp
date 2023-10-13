@@ -17,7 +17,6 @@ public:
     // Operator overload
     PresidentialPardonForm &operator=(const PresidentialPardonForm &obj);
 
-    std::string getTarget(void);
     void execute(Bureaucrat const & executor) const;
 };
 

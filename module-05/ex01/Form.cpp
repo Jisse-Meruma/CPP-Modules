@@ -74,9 +74,12 @@ Form	&Form::operator=(const Form &obj)
 
 std::ostream&   operator<<(std::ostream &out, const Form &obj)
 {
-    out << ", Name " << obj.getName();
-	out << ", is Signed " << obj.getSigned();
-	out << ", Signed grade " << obj.getSignedGrade(); 
-	out << ", Execute grade " << obj.getExecGrade();
+    out << "Form " << obj.getName();
+	if (obj.getSigned())
+		out << " | is Signed -> YES";
+	else
+		out << " | is Signed -> NO";
+	out << " | Grade needed to sign " << obj.getSignedGrade(); 
+	out << " | Grade needed to execute " << obj.getExecGrade();
     return (out);
 }

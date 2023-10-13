@@ -9,7 +9,7 @@ class ShrubberyCreationForm: public AForm {
 
     class UnableToOpenFileException : public std::exception {
         virtual const char *what() const throw();
-    }
+    };
 
 public:
     ShrubberyCreationForm();

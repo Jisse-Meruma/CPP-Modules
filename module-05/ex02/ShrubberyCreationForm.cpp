@@ -2,19 +2,17 @@
 #include <iostream>
 #include <fstream>
 
-const char *ShrubberyCreationForm::UnableToOpenFileException::what() throw()
+const char *ShrubberyCreationForm::UnableToOpenFileException::what() const throw()
 {
     return ("Shrubbery: Unable To Open File For Uknown Reasons!");
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm() {
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("No_Name", 145, 137){
     std::cout << "ShrubberyCreationForm default Constructor called" << std::endl;
-    this->name = "ShrubberyCreationForm";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form(target){
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(target, 145, 137){
     std::cout << "ShrubberyCreationForm Constructor called" << std::endl;
-    this->_target = target;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
@@ -22,22 +20,21 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj) {
-    this->_target = obj.getTarget();
+    if (this != &obj)
+    {
+        this->setSigned(obj.getSigned());
+    }
     return *this;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : AForm(obj.getName(), 145, 137){
     *this = obj;
-}
-
-std::string ShrubberyCreationForm::getTarget(void)
-{
-    return this->_target;
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
     std::string line;
+    std::string filename(this->getName() + "_shrubbery");
 
     try
     {
@@ -47,13 +44,14 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     {
         std::cerr << e.what() << std::endl;
     }
-
     std::ifstream infile("tree.txt");
-    std::ofstream outfile(this->_target + "_shrubbery");
+    std::ofstream outfile(filename.c_str());
     if (!outfile || !infile)
         throw UnableToOpenFileException();
     while (std::getline(infile, line))
     {
-        outfile << line;  
+        outfile << line << std::endl;  
     }
+    infile.close();
+    outfile.close();
 }

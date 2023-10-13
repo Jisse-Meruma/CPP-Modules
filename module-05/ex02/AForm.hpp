@@ -20,17 +20,19 @@ class AForm {
 	};
 
 	public:
-		AForm::AForm(const std::string name, const int signed_grade, const int exec_grade);
+		AForm(const std::string name, const int signed_grade, const int exec_grade);
 		virtual ~AForm();
 
 		AForm(const AForm &obj);
 		AForm	&operator=(const AForm &obj);
 
 	void		beSigned(const Bureaucrat &obj);
-	void		beExecuted(const Bureaucrat &obj);
+	void		beExecuted(const Bureaucrat &obj) const;
 	bool 		getSigned(void) const;
 	int			getSignedGrade(void) const;
 	int			getExecGrade(void) const;
+
+	void		setSigned(bool value);
 	std::string	getName(void) const;
 
 	virtual void		execute(Bureaucrat const & executor) const = 0;

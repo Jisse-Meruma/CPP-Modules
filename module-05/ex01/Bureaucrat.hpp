@@ -32,7 +32,7 @@ class Bureaucrat {
         void    increment(void);
         void    decrement(void);  
 
-        void    signAForm(Form &obj);      
+        void    signForm(Form &obj);      
 
     private:
         int         _grade;
