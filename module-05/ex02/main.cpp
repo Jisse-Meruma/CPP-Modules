@@ -14,8 +14,8 @@ int main(void)
 	{
 		jack.setGrade(1);
 		std::cout << jack << std::endl;
-		jack.signForm(president);
-		jack.signForm(robot);
+		// jack.signForm(president);
+		// jack.signForm(robot);
 		jack.executeForm(president);
 		jack.executeForm(robot);	
 	}

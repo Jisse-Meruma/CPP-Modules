@@ -2,12 +2,12 @@
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("GradeTooHighException -- Grade Too High uwu");
+    return ("GradeTooHighException -- Grade Too High 0-0 EXCEPTION");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("GradeTooLowException -- Grade Too Low :(");
+    return ("GradeTooLowException -- Grade Too Low :( EXCEPTION");
 }
 // Constructors and Destructor
 Bureaucrat::Bureaucrat() {

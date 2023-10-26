@@ -4,7 +4,7 @@
 
 const char *ShrubberyCreationForm::UnableToOpenFileException::what() const throw()
 {
-    return ("Shrubbery: Unable To Open File For Uknown Reasons!");
+    return ("Shrubbery: Unable To Open File For Uknown Reasons! EXCEPTION");
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("No_Name", 145, 137){

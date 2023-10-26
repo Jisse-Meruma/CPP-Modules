@@ -9,17 +9,17 @@ AForm::AForm() : 	_signed_grade(1),\
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
-	return ("Form, GradeTooHigh Wrong Input [1-150]");
+	return ("Form, GradeTooHigh Wrong Input [1-150] EXCEPTION");
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return ("Form, GradeTooLow Wrong Input [1-150]");
+	return ("Form, GradeTooLow Wrong Input [1-150] EXCEPTION");
 }
 
 const char *AForm::FormNotSignedException::what() const throw()
 {
-	return ("AForm, FormNotSigned Please Make Sure To Have It Signed When Executed");
+	return ("AForm, FormNotSigned Please Make Sure To Have It Signed When Executed EXCEPTION");
 }
 
 bool AForm::getSigned(void) const

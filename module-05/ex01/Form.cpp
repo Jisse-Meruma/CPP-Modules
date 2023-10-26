@@ -2,12 +2,12 @@
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("Form, GradeTooHigh Wrong Input [1-150]");
+	return ("Form, GradeTooHigh Wrong Input [1-150] EXCEPTION");
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return ("Form, GradeTooLow Wrong Input [1-150]");
+	return ("Form, GradeTooLow Wrong Input [1-150] EXCEPTION");
 }
 
 bool Form::getSigned(void) const
