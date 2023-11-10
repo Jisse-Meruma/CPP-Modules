@@ -1,7 +1,6 @@
 NAME	:= Casting
 
-CC		:= c++
-FLAGS	:= -Wall -Wextra -Werror -std=c++98
+FLAGS	:= -Wall -Wextra -Werror -std=c++11
 
 SRC		:= $(wildcard *.cpp)
 
@@ -14,11 +13,11 @@ run: all
 	./$(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $^ -o $(NAME)
+	$(CXX) $^ -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@mkdir -p $(@D)
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CXX) $(FLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	@mkdir $@

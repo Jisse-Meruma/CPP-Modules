@@ -5,58 +5,62 @@
 #include <cstdio>
 #include <iostream>
 #include <iomanip>
- 
-#define INT 0
-#define DOUBLE 1
-#define FLOAT 2
 
-// Constructors and Destructor
-// ScalarConverte::ScalarConverte() {
-//     std::cout << "ScalarConverte default Constructor called" << std::endl;
-//     this->name = "ScalarConverte";
-// }
+ScalarConverte::ScalarConverte() {
+    std::cout << "ScalarConverte default Constructor called" << std::endl;
+}
 
-// ScalarConverte::ScalarConverte(std::string n) {
-//     std::cout << "ScalarConverte Constructor called" << std::endl;
-//     this->name = n;
-// }
+ScalarConverte::ScalarConverte(std::string n) {
+    (void)n;
+    std::cout << "ScalarConverte Constructor called" << std::endl;
+}
 
-// ScalarConverte::~ScalarConverte() {
-//     std::cout << "ScalarConverte Destructor called" << std::endl;
-// }
+ScalarConverte::~ScalarConverte() {
+    std::cout << "ScalarConverte Destructor called" << std::endl;
+}
 
-// Canonical form
-// ScalarConverte &ScalarConverte::operator=(const ScalarConverte &obj) {
-//     //copy depending on vars;
-//     return *this;
-// }
 
-// ScalarConverte::ScalarConverte(const ScalarConverte &obj) {
-//     *this = obj;
-// }
+ScalarConverte &ScalarConverte::operator=(const ScalarConverte &obj) {
+    (void)obj;
+    return *this;
+}
 
-int     is_valid_digit(const std::string &input, const char *str, int *type)
+ScalarConverte::ScalarConverte(const ScalarConverte &obj) {
+    *this = obj;
+}
+
+
+
+t_type    is_valid_digit(const std::string &input, const char *str)
 {
+    t_type type = NO_TYPE;
     size_t i = 0;
 
+    if (input.length() == 1 && !isdigit(str[0]))
+        return (CHAR);
+    if ()
     while(isdigit(str[i]) && str[i])
         i++;
     if (str[i] == '.' && isdigit(str[i + 1]))
     {
-        i++;
-        *type = DOUBLE;
+        i++; 
+        type = DOUBLE;
     }
     while(isdigit(str[i]) && str[i])
         i++;
     if (str[i] == 'f')
     {
         i++;
-        *type = FLOAT;
+        type = FLOAT;
     }
     if (input.length() == i)
-        return (1);
+    {
+        if (type == NO_TYPE)
+            return (INT);
+        return (type);
+    }
     std::cerr << "Not a Valid Digit!" << std::endl;
-    return (0);
+    return (NO_TYPE);
 }
 
 bool    int_overflow(long double number)
@@ -88,47 +92,42 @@ void    ft_print_char(char charactar)
     std::cout << "Double: " << static_cast<double>(charactar) << std::endl;
 }
 
-void    ft_print_int(long double number)
+void    convert_int(const std::string &input)
 {
-    if (int_overflow(number))
+    int number;
+
+    try
     {
-        if (!isprint(number))
-            std::cout << "Char: " << static_cast<char>(number) << std::endl;
-        else
-            std::cout << "Non Displayable" << std::endl;
-        std::cout << "Int: " << static_cast<int>(number) << std::endl;
+        number = std::stoi(input);
     }
-    else
+    catch(const std::out_of_range & e)
     {
-        std::cout << "Char: Impossible" << std::endl;
-        std::cout << "Int: Impossible" << std::endl;
+        std::cerr << e.what() << '\n';
     }
-    if (float_overflow(number))
-        std::cout << "Float: " << static_cast<float>(number) << 'f' << std::endl;
-    else
-        std::cout << "Float Impossible" << std::endl;
-    if (double_overflow(number))
-        std::cout << "Double: " << static_cast<double>(number) << std::endl;
-    else
-        std::cout << "Double Impossible" << std::endl;
+    
+    (void)number;
+
+
+}
+
+void    convert_float(const std::string &input)
+{
+    (void)input;
+}
+
+void    convert_double(const std::string &input)
+{
+    (void)input;
 }
 
 
 void    ScalarConverte::convert(const std::string &input)
 {
-    long double number;
-    int         type = INT;
+    t_type type;
     const char  *str = input.c_str();
-
-    if (input.length() == 1 && isprint(str[0]) && !isdigit(str[0]))
-    {
-        ft_print_char(str[0]);
-    }
-    if (!is_valid_digit(input, str, &type))
-    {
-        return ;
-    }
-    sscanf(str, "%Lf", &number);
-    ft_print_int(number);
+    
+    type = is_valid_digit(input, str);
+    convert_int(input);
+    (void)type;
 
 }
