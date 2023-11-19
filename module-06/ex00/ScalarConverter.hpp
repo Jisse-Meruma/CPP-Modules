@@ -11,17 +11,19 @@ typedef enum
     INT,
     FLOAT,
     DOUBLE,
+    SUCCESs,
+    FAIL,
 }   t_type;
 
-class ScalarConverte {
+class ScalarConverter {
     public:
         static void convert(const std::string &input);
     private:
-        ScalarConverte();
-        ScalarConverte(std::string n);
-        ScalarConverte(const ScalarConverte &obj);
-        ~ScalarConverte();
-        ScalarConverte &operator=(const ScalarConverte &obj);
+        ScalarConverter();
+        ScalarConverter(std::string n);
+        ScalarConverter(const ScalarConverter &obj);
+        ~ScalarConverter();
+        ScalarConverter &operator=(const ScalarConverter &obj);
 };
 
 typedef void (*t_func)(const std::string &);

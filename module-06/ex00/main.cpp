@@ -1,4 +1,4 @@
-#include "ScalarConverte.hpp"
+#include "ScalarConverter.hpp"
 
 int	main(int argc, char *argv[])
 {
@@ -10,6 +10,6 @@ int	main(int argc, char *argv[])
 
 	std::string input(argv[1]);
 
-	ScalarConverte::convert(input);
+	ScalarConverter::convert(input);
 	return (0);
 }

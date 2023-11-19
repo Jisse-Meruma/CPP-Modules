@@ -23,10 +23,10 @@ int	main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	jack.setGrade(250);
-	std::cout << jack << std::endl;
 	try
 	{
+		jack.setGrade(250);
+		std::cout << jack << std::endl;
 		jack.decrement();
 	}
 	catch(const std::exception& e)

@@ -20,10 +20,8 @@ Intern::~Intern() {
 
 // Canonical form
 Intern &Intern::operator=(const Intern &obj) {
-    if (this != &obj)
-    {
-        // No attributes
-    }
+    (void)obj;
+    // No attributes
     return *this;
 }
 
@@ -59,6 +57,4 @@ AForm   *Intern::makeForm(const std::string &FormName, const std::string &Target
         }
     }
     throw UnknowFormPassedException();
-
 }
-
