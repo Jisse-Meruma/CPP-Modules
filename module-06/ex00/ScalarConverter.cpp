@@ -6,12 +6,6 @@
 #include <iostream>
 #include <iomanip>
 
-
-void    impossible(const char *type)
-{
-    std::cout << type << " Impossible" << std::endl;
-}
-
 ScalarConverter::ScalarConverter() {
     std::cout << "ScalarConverte default Constructor called" << std::endl;
 }
@@ -35,13 +29,34 @@ ScalarConverter::ScalarConverter(const ScalarConverter &obj) {
     *this = obj;
 }
 
+void    impossible(const char *type)
+{
+    std::cout << type << " Impossible" << std::endl;
+}
 
+int     double_pseudo_literals(const std::string &input)
+{
+    if (input == "-inf" || input == "+inf" || input == "nan")
+        return (true);
+    return (false);
+}
+
+int     float_pseudo_literals(const std::string &input)
+{
+    if (input == "-inff" || input == "+inff" || input == "nanf")
+        return (true);
+    return (false);
+}
 
 t_type    is_valid_digit(const std::string &input, const char *str)
 {
     t_type type = NO_TYPE;
     size_t i = 0;
 
+    if (double_pseudo_literals(input))
+        return (DOUBLE);
+    if (float_pseudo_literals(input))
+        return (FLOAT);
     if (input.length() == 1 && !isdigit(str[0]))
         return (CHAR);
     if (str[i] == '-' || str[i] == '+')
@@ -61,33 +76,8 @@ t_type    is_valid_digit(const std::string &input, const char *str)
         type = FLOAT;
     }
     if (input.length() == i)
-    {
-        if (type == NO_TYPE)
-            return (INT);
-        return (type);
-    }
+        return (type == NO_TYPE ? INT : type );
     return (NO_TYPE);
-}
-
-bool    int_overflow(long double number)
-{
-    if (number < std::numeric_limits<int>::max() && number > std::numeric_limits<int>::min())
-        return (true);
-    return (false);
-}
-
-bool    float_overflow(long double number)
-{
-    if (number < std::numeric_limits<double>::max() && number > std::numeric_limits<double>::min())
-        return (true);
-    return (false);
-}
-
-bool    double_overflow(long double number)
-{
-    if (number < std::numeric_limits<float>::max() && number > std::numeric_limits<float>::min())
-        return (true);
-    return (false);
 }
 
 void    convert_char(char charactar)
@@ -111,7 +101,8 @@ void    convert_int(const std::string &input)
     {
         type = FAIL;   
     }
-    if(type == SUCCESs)
+
+    if (type == SUCCESs)
     {
         if (number <= 126 && number >= 32)
             std::cout << "Char: " << static_cast<char>(number) << std::endl;
@@ -144,17 +135,20 @@ void    convert_float(const std::string &input)
     {
         type = FAIL;   
     }
-    if(type == SUCCESs)
+
+    if (type == SUCCESs)
     {
         if (number <= 126 && number >= 32)
             std::cout << "Char: " << static_cast<char>(number) << std::endl;
+        else if (float_pseudo_literals(input))
+            impossible("Char:");
         else
             std::cout << "Char: Non displayable" << std::endl;
 		if (number < std::numeric_limits<int>::max() && static_cast<int>(number) > std::numeric_limits<int>::min())
        		std::cout << "Int: " << static_cast<int>(number) << std::endl;
 		else
 			impossible("Int:");
-		if (number < std::numeric_limits<double>::max() && static_cast<int>(number) > std::numeric_limits<double>::min())
+		if ((number < std::numeric_limits<double>::max() && static_cast<int>(number) > std::numeric_limits<double>::min()) || float_pseudo_literals(input))
         	std::cout << "Double: " << static_cast<double>(number) << std::endl;
 		else
 			impossible("Double:");
@@ -182,10 +176,13 @@ void    convert_double(const std::string &input)
     {
         type = FAIL;   
     }
-    if(type == SUCCESs)
+
+    if (type == SUCCESs)
     {
         if (number <= 126 && number >= 32)
             std::cout << "Char: " << static_cast<char>(number) << std::endl;
+        else if (double_pseudo_literals(input))
+            impossible("Char:");
         else
             std::cout << "Char: Non displayable" << std::endl;
 		if (number < std::numeric_limits<int>::max() && static_cast<int>(number) > std::numeric_limits<int>::min())
@@ -193,7 +190,7 @@ void    convert_double(const std::string &input)
 		else
 			impossible("Int:");
         std::cout << "Double: " << number << std::endl;
-		if  (number < std::numeric_limits<float>::max() && static_cast<int>(number) > std::numeric_limits<float>::min())
+		if  ((number < std::numeric_limits<float>::max() && static_cast<int>(number) > std::numeric_limits<float>::min()) || double_pseudo_literals(input))
         	std::cout << "Float: " << static_cast<float>(number) << "f" << std::endl;
 		else
 			impossible("Float:");
