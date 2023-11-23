@@ -1,15 +1,10 @@
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 
-int	main(int argc, char *argv[])
-{
-	if (argc != 2)
-	{
-		std::cout << "Please Give 1 Argument to the program" << std::endl;
-		return (1);
-	}
+int	main()
+{	
+	Data		structure;
+	uintptr_t 	ptr;
 
-	std::string input(argv[1]);
-
-	ScalarConverter::convert(input);
+	ptr = Serializer::serialize(structure)
 	return (0);
 }
