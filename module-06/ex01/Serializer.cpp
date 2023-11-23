@@ -5,10 +5,6 @@ Serializer::Serializer() {
     std::cout << "Serializer default Constructor called" << std::endl;
 }
 
-Serializer::Serializer(std::string n) {
-    std::cout << "Serializer Constructor called" << std::endl;
-}
-
 Serializer::~Serializer() {
     std::cout << "Serializer Destructor called" << std::endl;
 }
@@ -24,10 +20,10 @@ Serializer::Serializer(const Serializer &obj) {
 
 uintptr_t Serializer::serialize(Data* ptr)
 {
-
+    return (reinterpret_cast<uintptr_t>(ptr));
 }
 
 Data*   Serializer::deserialize(uintptr_t raw)
 {
-    
+    return (reinterpret_cast<Data *>(raw));
 }
