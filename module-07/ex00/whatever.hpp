@@ -15,17 +15,13 @@ void swap(T &obj_one, T &obj_two)
 template <typename T>
 T min(T obj_one, T obj_two)
 {
-	if (obj_one < obj_two)
-		return (obj_one);
-	return (obj_two);
+	return ( (obj_one < obj_two) ? obj_one : obj_two );;
 }
 
 template <typename T>
 T max(T obj_one, T obj_two)
 {
-	if (obj_one > obj_two)
-		return (obj_one);
-	return (obj_two);
+	return ( (obj_one > obj_two) ? obj_one : obj_two );
 }
 
 #endif
