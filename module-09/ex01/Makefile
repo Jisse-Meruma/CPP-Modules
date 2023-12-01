@@ -1,9 +1,9 @@
-NAME	:= easyfind
+NAME	:= RPN
 
 CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -std=c++11
 
-SRC		:= $(wildcard *.cpp)
+SRC		:= main.cpp
 
 OBJ_DIR	:= ./obj
 OBJ		:= $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
