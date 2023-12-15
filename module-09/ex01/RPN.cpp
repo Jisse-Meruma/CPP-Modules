@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stack>
 
-int isValidOperator(std::stack<int> &storage, char charactar)
+static int isValidOperator(std::stack<int> &storage, char charactar)
 {
 	int operant1;
 	int operant2;
@@ -31,12 +31,12 @@ int isValidOperator(std::stack<int> &storage, char charactar)
 	}
 }
 
-bool isIntorOperator(char character)
+static bool isIntorOperator(char character)
 {
-	return ((character <= '9' && character >= '0') ? true : false);
+	return (character <= '9' && character >= '0');
 }
 
-int rpn(char *str)
+int rpn(const char *str)
 {
 	std::stack<int> storage;
 

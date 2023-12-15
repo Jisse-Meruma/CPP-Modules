@@ -1,8 +1,9 @@
 #include <iostream>
-#include "BitcoinExchange.cpp"
+#include "BitcoinExchange.hpp"
 
 int	main(int argc, char *argv[])
 {
+	(void)argv;
 	if (argc != 2)
 	{
 		std::cout << "Too many or Too little arguments please provide only 1" << std::endl;
@@ -11,7 +12,8 @@ int	main(int argc, char *argv[])
 
 	try
 	{
-		BitcoinExchagne(argv[1]);
+		BitCoinExchange obj;
+		obj.LoadInputFile(argv[1]);
 	}
 	catch(const std::exception& e)
 	{
