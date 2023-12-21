@@ -13,7 +13,8 @@ void BitCoinExchange::CalculateCourse(float exchange_date, float exchange_number
 	if (it == this->_map.end())
 	{
 		it = this->_map.lower_bound(exchange_date);
-		it--;
+		if (it != this->_map.begin()) // To make sure we dont have a negative iterator
+			it--;
 	}
 	std::cout << (exchange_number * it->second) << std::endl;
 }
@@ -56,14 +57,14 @@ bool BitCoinExchange::CheckNumber(const std::string &line, int location)
 
 bool BitCoinExchange::CheckDelimiter(const std::string &line, int location, char delimiter)
 {
-	return (line[location] != delimiter);	
+	return (line[location] == delimiter);	
 }
 
 void BitCoinExchange::CheckDataBase(const std::string &line)
 {
 	if (line.size() < 12)
 		throw std::logic_error("DataBase Error Bad Size!" + line);
-	if (!this->CheckDelimiter(line, 11, ','))
+	if (!this->CheckDelimiter(line, 10, ','))
 		throw std::logic_error("DataBase Error Bad Delimiter" + line);
 	if (!this->CheckDate(line))
 		throw std::logic_error("DataBase Error Bad Date" + line);
@@ -86,9 +87,10 @@ bool BitCoinExchange::CheckInputFile(const std::string &line)
 {
 	if (line.size() < 14)
 		return (PrintBadError(line, "Bad Input", true));
-	if (line[10] != ' ' && line[12] != ' ')
+	std::cout << "[" << line[10] << "] " << " [" << line[12] << "]" << std::endl;
+	if (line[10] != ' ' || line[12] != ' ')
 		return (PrintBadError(line, "Need Spaces", true));
-	if (!this->CheckDelimiter(line, 12, '|'))
+	if (!this->CheckDelimiter(line, 11, '|'))
 		return (PrintBadError(line, "input Error Bad Delimiter", true));
 	if (!this->CheckDate(line))
 		return (PrintBadError(line, "input Error Bad Date", true));
