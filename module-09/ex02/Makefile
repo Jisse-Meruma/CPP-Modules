@@ -1,7 +1,7 @@
 NAME	:= PmergeMe
 
 CC		:= c++
-FLAGS	:= -Wall -Wextra -Werror -std=c++11
+FLAGS	:= -g -Wall -Wextra -Werror -std=c++11
 
 SRC		:= $(wildcard *.cpp)
 
@@ -14,7 +14,7 @@ run: all
 	./$(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $^ -o $(NAME)
+	$(CC) -g $^ -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@mkdir -p $(@D)

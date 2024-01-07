@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	{
 		PmergeMe mergeme(argv + 1);
 
-		mergeme.sort_vector();
+		mergeme.sort();
 
 	}
 	catch(const std::exception& e)

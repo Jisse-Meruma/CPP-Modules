@@ -6,6 +6,7 @@
 #include <vector>
 #include <deque>
 #include <limits>
+#include <chrono>
 
 class PmergeMe {
 public:
@@ -19,12 +20,13 @@ public:
     PmergeMe &operator=(const PmergeMe &obj);
 
     bool IsValidNumber(char *numb);
+    void checkForDuplicates(void);
 
     template<typename T>
     void PrintArray(T array);
 
-    template<typename T>
-    int ParsePairArray(T array, std::vector<std::pair<int, int>> &pair_array);
+    template<typename T, typename T2>
+    int ParsePairArray(T array, T2 &pair_array);
 
     template<typename T>
     void BigSort(T it_begin, T it_end);
@@ -44,6 +46,8 @@ public:
 private:
     std::vector<int> _vec;
     std::deque<int> _deq;
+    double _vectime;
+    double _dequetime;
 };
 
 

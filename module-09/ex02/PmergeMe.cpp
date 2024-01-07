@@ -9,7 +9,6 @@ PmergeMe::PmergeMe(char *argv[])
 {    
     std::string numb;
     int integer;
-    std::cout << "PmergeMe Constructor called" << std::endl;
     for (int i=0; argv[i] != NULL; i++)
     {
         if (!this->IsValidNumber(argv[i]))
@@ -26,11 +25,10 @@ PmergeMe::PmergeMe(char *argv[])
             throw std::overflow_error("Overflow Error");
         }
     }
-    this->PrintArray(this->_vec);
+    this->checkForDuplicates();
 }
 
 PmergeMe::~PmergeMe() {
-    std::cout << "PmergeMe Destructor called" << std::endl;
 }
 
 // Canonical form
@@ -79,17 +77,44 @@ void PmergeMe::PrintArray(T array)
     std::cout << std::endl;
 }
 
+void PmergeMe::checkForDuplicates(void)
+{
+    std::vector<int> sorted_vector(this->_vec);
+    auto it = sorted_vector.begin();
+
+    while (it != sorted_vector.end())
+    {
+        if (it + 1 != sorted_vector.end() && *it > *(it + 1))
+        {
+            std::swap(*it, *(it + 1));
+            it = sorted_vector.begin();
+        }
+        else
+            it++;
+    }
+    for (auto it = sorted_vector.begin(); it != sorted_vector.end(); it++)
+    {
+        if (*it == *(it + 1))
+            throw std::logic_error("Error");
+    }
+    
+}
+
 void PmergeMe::sort(void)
 {
     std::cout << "Before:\t";
     PrintArray(this->_vec);
     this->sort_vector();
-
+    this->sort_deque();
+    std::cout << "After:\t";
+    PrintArray(this->_deq);
+    std::cout << "Time to process a range of " << this->_vec.size() << " elements with std::vector : " << (this->_vectime / 10000) << " us\n";
+	std::cout << "Time to process a range of " << this->_deq.size() << " elements with std::deque  : " << (this->_dequetime / 10000) << " us\n";
 
 }
 
-template<typename T>
-int PmergeMe::ParsePairArray(T array, std::vector<std::pair<int, int>> &pair_array)
+template<typename T, typename T2>
+int PmergeMe::ParsePairArray(T array, T2 &pair_array)
 {
     auto arr_it = array.begin();
 
@@ -112,13 +137,16 @@ void PmergeMe::MergeSort(T it_begin, T it_end, std::ptrdiff_t distance)
 {
     std::vector<std::pair<int, int>> pair_array;
     auto left_begin = it_begin;
-    auto left_end = it_end - (distance / 2); 
-    auto right_begin = it_begin + ((distance / 2));
+    auto left_end = it_end - ((distance / 2)); 
+    T right_begin; 
     auto right_end = it_end;
 
+    right_begin = it_begin + ((distance / 2));
+    if (distance % 2 != 0)
+        right_begin++;
     while (left_begin != left_end + 1 && right_begin != right_end + 1)
     {
-        if (left_begin->first < right_begin->first)
+        if (left_begin->first <= right_begin->first)
         {
             pair_array.push_back(std::make_pair(left_begin->first, left_begin->second));
             left_begin++;
@@ -142,7 +170,7 @@ void PmergeMe::BigSort(T it_begin, T it_end)
     std::ptrdiff_t distance;
 
     distance = std::distance(it_begin, it_end) + 1;
-    if (distance < 2)
+    if (it_begin == it_end)
         return ;
     BigSort(it_begin, it_end - (distance / 2));
     BigSort(it_begin + ((distance / 2)), it_end);
@@ -173,11 +201,26 @@ void PmergeMe::sort_vector(void)
 {
     int struggler;
     std::vector<std::pair<int, int>> pair_array;
+    std::chrono::high_resolution_clock::time_point start_timer = std::chrono::high_resolution_clock::now();
     
     pair_array.resize(this->_vec.size() / 2);
     struggler = this->ParsePairArray(this->_vec, pair_array);
     this->BigSort(pair_array.begin(), pair_array.end() - 1);
     this->SmallSort(pair_array, this->_vec, struggler);
-    PrintArray(this->_vec);
-    std::cout << struggler << std::endl;
+    std::chrono::high_resolution_clock::time_point end_timer = std::chrono::high_resolution_clock::now();
+    this->_vectime = std::chrono::duration_cast<std::chrono::nanoseconds>(end_timer - start_timer).count();;
+}
+
+void PmergeMe::sort_deque(void)
+{
+    int struggler;
+    std::deque<std::pair<int, int>> pair_array;
+    std::chrono::high_resolution_clock::time_point start_timer = std::chrono::high_resolution_clock::now();
+    
+    pair_array.resize(this->_vec.size() / 2);
+    struggler = this->ParsePairArray(this->_deq, pair_array);
+    this->BigSort(pair_array.begin(), pair_array.end() - 1);
+    this->SmallSort(pair_array, this->_deq, struggler);
+    std::chrono::high_resolution_clock::time_point end_timer = std::chrono::high_resolution_clock::now();
+    this->_dequetime = std::chrono::duration_cast<std::chrono::nanoseconds>(end_timer - start_timer).count();;
 }
