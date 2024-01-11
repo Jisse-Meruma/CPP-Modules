@@ -37,6 +37,9 @@ public:
     template<typename T, typename T2>
     void SmallSort(T pair_array, T2 &Array, int struggler);
 
+    template<typename T>
+    T JacobBuilder(size_t size);
+
     void sort(void);
     void sort_vector(void);
     void sort_deque(void);
