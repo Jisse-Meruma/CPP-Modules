@@ -70,11 +70,11 @@ void PmergeMe::PrintArray(T array)
     counter = 0;
     for (auto it = array.begin(); it != array.end(); it++)
     {
-        // if (counter == 5)
-        // {
-        //     std::cout << "[...]";
-        //     break;
-        // }
+        if (counter == 5)
+        {
+            std::cout << "[...]";
+            break;
+        }
         std::cout << *it << " ";
         counter++;
     }
