@@ -14,7 +14,7 @@ run: all
 	./$(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -g $^ -o $(NAME)
+	$(CC) -fsanitize=address -g $^ -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@mkdir -p $(@D)

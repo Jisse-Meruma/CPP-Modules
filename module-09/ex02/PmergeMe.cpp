@@ -82,15 +82,14 @@ void PmergeMe::PrintArray(T array)
 }
 
 template <typename T>
-T PmergeMe::JacobBuilder(size_t size)
+T PmergeMe::JacobBuilder(int size)
 {
     int temp;
-    int previous = 0;
     int current = 1;
+    int previous = 1;
+    T jacob_sequence;
 
-    T jacob_sequence
-
-    jacob_sequence.push_back(previous);
+    jacob_sequence.push_back(0);
     while (current < size)
     {
         jacob_sequence.push_back(current);
@@ -178,23 +177,33 @@ void PmergeMe::BigSort(T it_begin, T it_end)
 }
 
 template <typename T, typename T2>
-void PmergeMe::SmallSort(T pair_array, T2 &Array, int struggler)
+void PmergeMe::SmallSort(T pair_array, T2 &array, int struggler)
 {
     T2 sorted_array;
+    T2 jacob_array;
 
+    auto p_it = pair_array.begin();
+    jacob_array = this->JacobBuilder<T2>(pair_array.size());
     for (auto pair_it = pair_array.begin(); pair_it != pair_array.end(); pair_it++)
         sorted_array.push_back(pair_it->first);
-    for (auto pair_it = pair_array.begin(); pair_it != pair_array.end(); pair_it++)
+    for (auto jacob_it = jacob_array.begin(); jacob_it != jacob_array.end(); jacob_it++)
+    {
+        auto it = std::lower_bound(sorted_array.begin(), sorted_array.end(), (p_it + *(jacob_it))->second);
+        sorted_array.insert(it, (p_it + *(jacob_it))->second);
+        pair_array.erase(p_it + *(jacob_it));
+    }
+    for (auto pair_it = pair_array.rbegin(); pair_it != pair_array.rend(); pair_it++)
     {
         auto it = std::lower_bound(sorted_array.begin(), sorted_array.end(), pair_it->second);
         sorted_array.insert(it, pair_it->second);
     }
+    
     if (struggler != -1)
     {
         auto it = std::lower_bound(sorted_array.begin(), sorted_array.end(), struggler);
         sorted_array.insert(it, struggler);
     }
-    std::copy(sorted_array.begin(), sorted_array.end(), Array.begin());
+    std::copy(sorted_array.begin(), sorted_array.end(), array.begin());
 }
 
 void PmergeMe::sort_vector(void)
@@ -209,7 +218,6 @@ void PmergeMe::sort_vector(void)
     this->SmallSort(pair_array, this->_vec, struggler);
     std::chrono::high_resolution_clock::time_point end_timer = std::chrono::high_resolution_clock::now();
     this->_vectime = std::chrono::duration_cast<std::chrono::nanoseconds>(end_timer - start_timer).count();
-    ;
 }
 
 void PmergeMe::sort_deque(void)
@@ -224,5 +232,4 @@ void PmergeMe::sort_deque(void)
     this->SmallSort(pair_array, this->_deq, struggler);
     std::chrono::high_resolution_clock::time_point end_timer = std::chrono::high_resolution_clock::now();
     this->_dequetime = std::chrono::duration_cast<std::chrono::nanoseconds>(end_timer - start_timer).count();
-    ;
 }
