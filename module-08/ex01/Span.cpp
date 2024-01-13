@@ -13,7 +13,6 @@ const char *Span::CantCalculateSpanException::what(void) const throw()
 // Constructors and Destructor
 Span::Span() {
     std::cout << "Span default Constructor called" << std::endl;
-    this->_numbers.resize(1);
     this->_total_stored = 0;
 }
 
@@ -29,7 +28,9 @@ Span::~Span() {
 
 // Canonical form
 Span &Span::operator=(const Span &obj) {
-    (void)obj;
+    this->_total_stored = obj._total_stored;
+    this->_numbers = obj._numbers;
+    this->_sorted = obj._sorted;
     return *this;
 }
 

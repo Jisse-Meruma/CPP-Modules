@@ -7,6 +7,7 @@ int main()
 	mstack.push(5);
 	mstack.push(17);
 	std::cout << "top " << mstack.top() << std::endl;
+	// Remove the 17 from the stack
 	mstack.pop();
 	std::cout << "size " << mstack.size() << std::endl;
 	mstack.push(3);
@@ -25,10 +26,10 @@ int main()
 		}
 	}
 
-	const MutantStack<int> const_mstack;
+	const MutantStack<int> const_mstack(mstack);
 
-	for (MutantStack<int>::const_iterator it = const_mstack.begin(); it != const_mstack.end(); it++)
-		std::cout << "a" << std::endl;
+	for (MutantStack<int>::const_reverse_iterator it = const_mstack.crbegin(); it != const_mstack.crend(); it++)
+		std::cout << *it << std::endl;
 	
 
 	// Added the list version to compare my list with. some lil things are other way around because we are using the stack!

@@ -8,7 +8,7 @@ int main(void)
 
     try
     {
-      std::cout << *easyfind(vec, 2) << std::endl;
+      std::cout << *easyfind(vec, 5) << std::endl;
     }
     catch(const std::exception& e)
     {

@@ -13,7 +13,27 @@ int main(void)
 	vec.push_back(-2147483647);
 	vec.push_back(-2147483648);
 	Span s(vec.size());
-	s.AddRange(vec.begin(), vec.end());
-	std::cout << "short " << s.shortestSpan() << std::endl;
-	std::cout << "long " << s.longestSpan() << std::endl;
+
+	try
+	{
+		s.AddRange(vec.begin(), vec.end());
+		std::cout << "short " << s.shortestSpan() << std::endl;
+		std::cout << "long " << s.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	// try
+	// {
+	// 	Span a;
+	// 	a.AddRange(vec.begin(), vec.end());
+	// 	std::cout << "short " << a.shortestSpan() << std::endl;
+	// 	std::cout << "long " << a.longestSpan() << std::endl;
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << e.what() << '\n';
+	// }
 }
